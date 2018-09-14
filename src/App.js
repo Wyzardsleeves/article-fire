@@ -56,8 +56,6 @@ class App extends Component {
     console.log("updateSearch is working");
     //this.props.onUpdateSearch(this.refs.searchBar.value);
     this.props.onUpdateSearch(this.state.currentSearch);
-
-
     this.getArticles();
   }
 
@@ -69,11 +67,14 @@ class App extends Component {
           <h1 className="App-title">Article Fire</h1>
           <h5>(Liz said that design/UI didn't matter so I didn't do any)</h5>
         </header>
+        <div>
+          <h5><a href="https://github.com/Wyzardsleeves/article-fire" target="_blank" rel="noopener noreferrer">Find on Github</a></h5>
+        </div>
         <form>
           <input ref="searchBar" onChange={this.fieldChangeTrack} type="text" />
           <button onClick={this.onUpdateSearch}>Update Search</button>
         </form>
-        {this.props.search != '' &&
+        {this.props.search !== '' &&
           <p>Showing Results for <span style={{color: 'green'}}>{this.props.search}</span></p>
         }
         <div>
@@ -83,7 +84,7 @@ class App extends Component {
                 <h3>{article.title}</h3>
                 <h5>By {article.author}</h5>
                 {article.story_text &&
-                  <p>{this.infoCleanup(article.story_text)}</p>
+                  <p>Preview: {this.infoCleanup(article.story_text)}</p>
                 }
                 <p>{article.num_comments} Comments</p>
                 <p>{article.points} Likes</p>
@@ -91,6 +92,7 @@ class App extends Component {
                 {article.url &&
                   <p><a href={article.url} target="_blank">Go to artilcle ></a></p>
                 }
+                -------------------------------------------------
               </li>
             )}
           </ul>
